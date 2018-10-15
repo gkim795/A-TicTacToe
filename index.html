@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>
+      Tic Tac Toe
+    </title>
+  <style>
+
+    .box{
+      border: 1px solid black;
+      padding: 15px;
+      height: 50px;
+      width: 50px
+    }
+
+    .scores th, td{
+      border: 1px solid black;
+      padding: 15px;
+      height: 30px;
+    }
+    
+  </style>
+
+  </head>
+
+  <body>
+    <button id='reset-button'>Restart</button>
+   
+    <div class='board'>
+      <br>
+      <table >
+        <tr class='row-1'>
+          <td class ='box'id='00'> </td>
+          <td class ='box'id='01'> </td>
+          <td class ='box'id='02'> </td>
+        </tr>
+        <tr class='row-2'>
+          <td class ='box'id='10'> </td>
+          <td class ='box'id='11'> </td>
+          <td class ='box'id='12'> </td>
+        </tr>
+        <tr class='row-3'>
+          <td class ='box'id='20'> </td>
+          <td class ='box'id='21'> </td>
+          <td class ='box'id='22'> </td>
+          </tr>
+      </table>
+    </div>
+
+    <div class='scores'>
+      <br>
+      <table style="width: 110px">
+        <tr>
+          <th>Player X</th>
+          <th>Player Y</th>
+        </tr>
+        <tr>
+          <td class='p1-score'>0</td>
+          <td class='p2-score'>0</td>
+        </tr>
+      </table>
+    </div>
+    <script src="app.js"></script>
+  </body>
+</html>
