@@ -87,7 +87,7 @@ const check = (row,col) => {
     sumMinDiag += array[2-i][i]
   }
 
-
+console.log(array)
   if(sumRow===3 || sumCol ===3 || sumDiag === 3 || sumMinDiag === 3){
     win = true
     p1Score++;
@@ -98,8 +98,7 @@ const check = (row,col) => {
     p2Score++;
     scoreArray.push('Player 2')
     scoreBoard()
-  }
-  if(count === 9) {
+  }else if(count === 9) {
     alert('its a tie!')
   }
 }
