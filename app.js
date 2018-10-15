@@ -1,6 +1,6 @@
 console.log('hello from your app.js page')
 
-var array = [[],[],[]]
+var array = [[0,0,0],[0,0,0],[0,0,0]]
 var player = true
 var boxes = document.getElementsByClassName('box')
 var win = false
@@ -29,7 +29,7 @@ for (var i = 0;i <boxes.length; i++) {
     let col = current[1]
     if (!array[row][col]&&!win){
 
-      player?  e.target.innerHTML = 'X' : e.target.innerHTML = 'O'
+      player?  e.target.innerHTML = 'O' : e.target.innerHTML = 'X'
 
       player = !player;
       arrTable(current)
@@ -45,93 +45,49 @@ const arrTable = (current) => {
   let val;
 
   player? val = 1 : val =10;
-
   array[row][col] = val
-  
-
-  checkRow(row,col)
-  // checkCol(col)
-  // checkDiag()
-  scoreBoard()
+  check(row,col)
 }
 
 
 let p1 = document.getElementsByClassName('p1-score')
-console.log(p1)
 let p2 = document.getElementsByClassName('p2-score')
 
 
 
 
-const checkRow = (row,col) => {
-  let sumRow = 0
-  let sumCol = 0
+const check = (row,col) => {
+  let sumRow = 0;
+  let sumCol = 0;
   let sumDiag = 0;
+  let sumMinDiag = 0;
 
-  for (i in array) {
+  for (let i = 0; i <3; i++) {
     sumCol += array[i][col]
     sumRow +=array[row][i]
     sumDiag +=array[i][i]
+    sumMinDiag += array[2-i][i]
   }
 
-  console.log(sumRow, sumCol, sumDiag)
 
-  if(sumRow===3 || sumCol ===3 || sumDiag === 3){
+  if(sumRow===3 || sumCol ===3 || sumDiag === 3 || sumMinDiag === 3){
+    win = true
     p1Score++;
-    win = true
     scoreArray.push('Player 1')
-  } else if (sumRow === 30 || sumCol === 3 || sumDiag === 3) {
-    p2Score++;
+    scoreBoard()
+  } else if (sumRow === 30 || sumCol === 30 || sumDiag === 30 || sumMinDiag === 30) {
     win = true
+    p2Score++;
     scoreArray.push('Player 2')
+    scoreBoard()
   }
 
-console.log(array)
 }
 
-// const checkCol = (col) => {
-//   let sum = 0
-//   for (i in array) {
-//     sum += array[i][col]
-//   }
-
-//   if(sum===3){
-//     p1Score++;
-//     win = true
-//     scoreArray.push('Player 1')
-
-//   } else if (sum === 30) {
-//     p2Score++;
-//     win = true
-//     scoreArray.push('Player 2')
-//   }
-// }
-
-// const checkDiag = () => {
-//   let sum = 0;
-//   for (i in array) {
-//     sum +=array[i][i]
-//   }
-
-//   if(sum===3){
-//     p1Score++;
-//     win = true
-//     scoreArray.push('Player 1')
-//   } else if (sum === 30) {
-//     p2Score++;
-//     win = true
-//     scoreArray.push('Player 2')
-//   }
-
-// }
-
 const scoreBoard = () => {
-  if(win){
-    if(player){
-      p1[0].innerHTML = p1Score
-      console.log(p1[0].innerHTML)
-    } else {
-      p2[0].innerHTML = p1Score
-    }
+  if(player){
+    p1[0].innerHTML = p1Score
+  } else {
+    p2[0].innerHTML = p2Score
   }
 }
