@@ -7,18 +7,35 @@ var win = false
 var scoreArray = []
 var p1Score = 0;
 var p2Score = 0;
+var p1Name ='O'
+var p2Name ='X'
+var count = 0;
 
 var resetButton = document.getElementById('reset-button')
 resetButton.onclick = function (){
   console.log('this button resets')
   array = [[],[],[]]
   win = false
+  count = 0;
   player = !player
   for (var m = 0; m <boxes.length; m++){
     boxes[m].innerHTML = ' ';
   }
 }
 
+
+var submitButton = document.getElementById('submit-button')
+
+submitButton.onclick = function (){
+  event.preventDefault()
+  p1Name = document.getElementsByName('player1')[0].value
+  p2Name = document.getElementsByName('player2')[0].value
+
+  document.getElementsByClassName('sb-name1')[0].innerHTML = p1Name;
+  document.getElementsByClassName('sb-name2')[0].innerHTML = p2Name;
+
+  console.log('submit button was clicked!')
+}
 
 let current;
 
@@ -29,9 +46,10 @@ for (var i = 0;i <boxes.length; i++) {
     let col = current[1]
     if (!array[row][col]&&!win){
 
-      player?  e.target.innerHTML = 'O' : e.target.innerHTML = 'X'
+      player?  e.target.innerHTML = p1Name : e.target.innerHTML = p2Name
 
       player = !player;
+      count++;
       arrTable(current)
     }
   })
@@ -81,7 +99,9 @@ const check = (row,col) => {
     scoreArray.push('Player 2')
     scoreBoard()
   }
-
+  if(count === 9) {
+    alert('its a tie!')
+  }
 }
 
 const scoreBoard = () => {

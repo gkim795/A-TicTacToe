@@ -24,7 +24,13 @@
   </head>
 
   <body>
+    <form>
+      Player 1: <input type="text" placeholder="X" name="player1">
+      Player 2: <input type="text" placeholder="O" name="player2">
+      <button id="submit-button">Submit</button>
+    </form>
     <button id='reset-button'>Restart</button>
+    
    
     <div class='board'>
       <br>
@@ -51,12 +57,12 @@
       <br>
       <table style="width: 110px">
         <tr>
-          <th>Player 1</th>
-          <th>Player 2</th>
+          <th class='sb-name1'>Player 1</th>
+          <th class='sb-name2'>Player 2</th>
         </tr>
         <tr>
-          <td class='p1-score'>0</td>
           <td class='p2-score'>0</td>
+          <td class='p1-score'>0</td>
         </tr>
       </table>
     </div>
